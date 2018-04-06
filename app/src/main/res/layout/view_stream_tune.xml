@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="java.util.Locale" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="controller"
+            type="com.onix.streamer.demo.custom.CustomStreamFragment" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="@{controller.streamer.started || controller.isPreparing ? View.INVISIBLE : View.VISIBLE}">
+
+        <LinearLayout
+            android:id="@+id/preview_size"
+            android:onClick="@{() -> controller.onPreviewSizeChanged()}"
+            style="@style/TuneButtonContainer">
+
+            <TextView
+                style="@style/TuneTextViewTiny"
+                android:text="@string/preview_size" />
+
+            <TextView
+                android:id="@+id/preview_size_view"
+                style="@style/TuneTextViewSmall"
+                android:text="@{String.format(Locale.getDefault(), @string/preview_size_pattern, controller.streamer.currentPreviewSize.width, controller.streamer.currentPreviewSize.height)}" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/video_bitrate"
+            style="@style/TuneButtonContainer"
+            android:onClick="@{() -> controller.onVideoBitrateChanged()}">
+
+            <TextView
+                style="@style/TuneTextViewTiny"
+                android:text="@string/video_bitrate" />
+
+            <TextView
+                android:id="@+id/video_bitrate_view"
+                style="@style/TuneTextViewSmall"
+                android:text="@{String.valueOf(controller.streamer.videoBitrate)}" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/audio_bitrate"
+            style="@style/TuneButtonContainer"
+            android:onClick="@{() -> controller.onAudioBitrateChanged()}">
+
+            <TextView
+                style="@style/TuneTextViewTiny"
+                android:text="@string/audio_bitrate" />
+
+            <TextView
+                android:id="@+id/audio_bitrate_view"
+                style="@style/TuneTextViewSmall"
+                android:text="@{String.valueOf(controller.streamer.audioBitrate)}" />
+        </LinearLayout>
+
+        <CheckBox
+            android:id="@+id/audio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dp"
+            android:checked="@{controller.streamer.audioEnabled}"
+            android:onCheckedChanged="@{(buttonView, isChecked) -> controller.streamer.enableAudio(isChecked)}"
+            android:text="@string/audio"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+</layout>

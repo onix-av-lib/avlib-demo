@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="java.util.Locale" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="controller"
+            type="com.onix.streamer.demo.custom.CustomStreamFragment" />
+
+        <variable
+            name="fps"
+            type="int" />
+
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/stream_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.onix.avlib.view.CameraStreamView
+            android:id="@+id/camera_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:id="@+id/switch_camera"
+            android:layout_width="@dimen/controls_size"
+            android:layout_height="@dimen/controls_size"
+            android:layout_margin="@dimen/controls_margin"
+            android:onClick="@{() -> controller.onCameraSwitch()}"
+            android:src="@drawable/ic_switch_camera"
+            android:visibility="@{controller.streamer.started || controller.isPreparing ? View.INVISIBLE : View.VISIBLE}" />
+
+        <ImageView
+            android:id="@+id/start"
+            android:layout_width="@dimen/controls_size"
+            android:layout_height="@dimen/controls_size"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/controls_margin"
+            android:background="@drawable/button_start"
+            android:onClick="@{() -> (controller.streamer.started ? controller.streamer.stopStreaming() : controller.streamer.startStreaming())}"
+            android:padding="12dp"
+            android:src="@{controller.streamer.started ? @drawable/ic_stop_stream : @drawable/ic_start_stream}"
+            android:visibility="@{controller.isPreparing ? View.INVISIBLE : View.VISIBLE}"/>
+
+        <TextView
+            android:id="@+id/preparing"
+            style="@style/MainText"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/controls_margin"
+            android:text="@string/preparing"
+            android:textColor="@android:color/white"
+            android:visibility="@{controller.isPreparing ? View.VISIBLE : View.GONE}" />
+
+        <TextView
+            android:id="@+id/fps_view"
+            style="@style/MainText"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="@dimen/controls_margin"
+            android:text='@{fps != 0 ? String.format(Locale.getDefault(), @string/fps_pattern, fps) : ""}'
+            android:visibility="@{controller.streamer.started ? View.VISIBLE : View.INVISIBLE}" />
+
+        <include
+            android:id="@+id/tune_container"
+            layout="@layout/view_stream_tune"
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true" />
+
+    </RelativeLayout>
+</layout>

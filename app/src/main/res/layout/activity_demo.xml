@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.os.Build" />
+
+        <variable
+            name="eventHandler"
+            type="com.onix.streamer.demo.DemoActivity" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/server_url"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:layout_margin="20dp"
+            android:inputType="textUri"
+            android:hint="@string/hint_rtmp_url" />
+
+        <Button
+            android:id="@+id/activity_example"
+            style="@style/DemoButton"
+            android:onClick="@{() -> eventHandler.onActivityExample()}"
+            android:text="@string/simple_activity_example" />
+
+        <Button
+            android:id="@+id/fragment_example"
+            style="@style/DemoButton"
+            android:onClick="@{() -> eventHandler.onFragmentExample()}"
+            android:text="@string/simple_fragment_example" />
+
+        <Button
+            android:id="@+id/custom_example"
+            style="@style/DemoButton"
+            android:onClick="@{() -> eventHandler.onCustomExample()}"
+            android:text="@string/custom_settings_example" />
+
+        <Button
+            android:id="@+id/action_cam"
+            style="@style/DemoButton"
+            android:enabled="@{android.os.Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.LOLLIPOP}"
+            android:onClick="@{() -> eventHandler.onCamExample()}"
+            android:text="@string/gopro_example" />
+    </LinearLayout>
+</layout>

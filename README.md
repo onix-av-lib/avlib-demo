@@ -107,4 +107,4 @@ mStreamer.stopStreaming();
 
 [Official website](https://rtmplib-android.com) 
 
-Copyright © 2017 [Onix-Systems](https://onix-systems.com/), LLC, All Rights Reserved. 
+Copyright © 2018 [Onix-Systems](https://onix-systems.com/), LLC, All Rights Reserved. 

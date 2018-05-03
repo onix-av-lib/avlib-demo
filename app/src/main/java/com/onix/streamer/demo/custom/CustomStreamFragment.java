@@ -195,6 +195,11 @@ public class CustomStreamFragment extends Fragment implements IStreamerEvents {
 
     @Override
     public void onInitCompleted() {
+
+        // record stream to file example
+        String fileName = getActivity().getExternalFilesDir(null).getAbsolutePath() + "/test.mp4";
+        mStreamer.setRecordFile(fileName);
+
         mStreamer.setServerUrl(mServerUrl);
         mPreparing.set(false);
         mBinding.invalidateAll();

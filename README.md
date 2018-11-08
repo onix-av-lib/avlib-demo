@@ -23,6 +23,7 @@ AVLib library is powerful RTMP-streaming solution that provides following featur
 * Action cameras support
 * “Tap to focus” feature
 * “Record stream” feature
+* Device screen broadcasting
 
 <br>
 
@@ -34,7 +35,7 @@ AVLib library is powerful RTMP-streaming solution that provides following featur
 
 ```gradle
 dependencies {
-	implementation(name: 'AVlib1.0.1', ext: 'aar')
+	implementation(name: 'AVlib1.0.2', ext: 'aar')
 }
 ```
 - For broadcasting from android cam use CameraStreamer class. Create instance and attach 'broadcast view'.

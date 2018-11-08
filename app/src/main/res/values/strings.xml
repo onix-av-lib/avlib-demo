@@ -10,6 +10,8 @@
     <string name="simple_fragment_example">Simple fragment example</string>
     <string name="custom_settings_example">Custom settings example</string>
     <string name="gopro_example">Gopro example</string>
+    <string name="screen_activity_example">Screen activity example</string>
+    <string name="screen_fragment_example">Screen fragment example</string>
     <string name="preparing">Preparing…</string>
 
     <!--errors-->
@@ -18,8 +20,10 @@
     <string name="error_permissions">Missing permissions</string>
     <string name="error_server">Server error</string>
     <string name="error_connection">Connection Error</string>
+    <string name="error_display_not_found">Display capture error</string>
 
     <!--alerts-->
+    <string name="recording">Screen recording...</string>
     <string name="alert_permissions">Please allow permissions</string>
     <string name="alert_permissions_denied_message">We are sorry, but app can\'t broadcasting without requested permissions</string>
     <string name="alert_multiple_networks">Please, make sure you are connected to action cam via wifi. Enable mobile network for internet connection as well</string>

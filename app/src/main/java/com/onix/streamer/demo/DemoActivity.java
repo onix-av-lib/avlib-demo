@@ -13,6 +13,8 @@ import com.onix.streamer.demo.activityimpl.SimpleStreamActivity;
 import com.onix.streamer.demo.custom.CustomStreamActivity;
 import com.onix.streamer.demo.databinding.ActivityDemoBinding;
 import com.onix.streamer.demo.fragmentimpl.StreamActivity;
+import com.onix.streamer.demo.screenactivity.ScreenStreamActivity;
+import com.onix.streamer.demo.screenfragment.SimpleScreenStreamActivity;
 
 public class DemoActivity extends AppCompatActivity {
 
@@ -40,6 +42,14 @@ public class DemoActivity extends AppCompatActivity {
 
     public void onCamExample() {
         startExample(ActionCamStreamActivity.class, getString(R.string.alert_multiple_networks));
+    }
+
+    public void onScreenFragmentExample() {
+        startExample(SimpleScreenStreamActivity.class, getString(R.string.alert_network_with_internet_connection));
+    }
+
+    public void onScreenActivityExample() {
+        startExample(ScreenStreamActivity.class, getString(R.string.alert_network_with_internet_connection));
     }
 
 

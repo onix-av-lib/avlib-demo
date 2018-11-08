@@ -11,44 +11,63 @@
 
     </data>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/server_url"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:layout_margin="20dp"
-            android:inputType="textUri"
-            android:hint="@string/hint_rtmp_url" />
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/activity_example"
-            style="@style/DemoButton"
-            android:onClick="@{() -> eventHandler.onActivityExample()}"
-            android:text="@string/simple_activity_example" />
+            <EditText
+                android:id="@+id/server_url"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:ems="10"
+                android:hint="@string/hint_rtmp_url"
+                android:inputType="textUri" />
 
-        <Button
-            android:id="@+id/fragment_example"
-            style="@style/DemoButton"
-            android:onClick="@{() -> eventHandler.onFragmentExample()}"
-            android:text="@string/simple_fragment_example" />
+            <Button
+                android:id="@+id/activity_example"
+                style="@style/DemoButton"
+                android:onClick="@{() -> eventHandler.onActivityExample()}"
+                android:text="@string/simple_activity_example" />
 
-        <Button
-            android:id="@+id/custom_example"
-            style="@style/DemoButton"
-            android:onClick="@{() -> eventHandler.onCustomExample()}"
-            android:text="@string/custom_settings_example" />
+            <Button
+                android:id="@+id/fragment_example"
+                style="@style/DemoButton"
+                android:onClick="@{() -> eventHandler.onFragmentExample()}"
+                android:text="@string/simple_fragment_example" />
 
-        <Button
-            android:id="@+id/action_cam"
-            style="@style/DemoButton"
-            android:enabled="@{android.os.Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.LOLLIPOP}"
-            android:onClick="@{() -> eventHandler.onCamExample()}"
-            android:text="@string/gopro_example" />
-    </LinearLayout>
+            <Button
+                android:id="@+id/custom_example"
+                style="@style/DemoButton"
+                android:onClick="@{() -> eventHandler.onCustomExample()}"
+                android:text="@string/custom_settings_example" />
+
+            <Button
+                android:id="@+id/screen_activity_example"
+                style="@style/DemoButton"
+                android:enabled="@{android.os.Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.LOLLIPOP}"
+                android:onClick="@{() -> eventHandler.onScreenActivityExample()}"
+                android:text="@string/screen_activity_example" />
+
+            <Button
+                android:id="@+id/screen_fragment_example"
+                style="@style/DemoButton"
+                android:enabled="@{android.os.Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.LOLLIPOP}"
+                android:onClick="@{() -> eventHandler.onScreenFragmentExample()}"
+                android:text="@string/screen_fragment_example" />
+
+            <Button
+                android:id="@+id/action_cam"
+                style="@style/DemoButton"
+                android:enabled="@{android.os.Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.LOLLIPOP}"
+                android:onClick="@{() -> eventHandler.onCamExample()}"
+                android:text="@string/gopro_example" />
+        </LinearLayout>
+    </ScrollView>
 </layout>

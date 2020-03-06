@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="java.util.Locale" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="streamer"
+            type="com.onix.avlib.CameraStreamer" />
+
+        <variable
+            name="previewSize"
+            type="com.onix.avlib.PreviewSize" />
+
+        <variable
+            name="fps"
+            type="int" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/black">
+
+        <com.onix.avlib.view.CameraStreamView
+            android:id="@+id/cameraView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="@dimen/controls_size"
+            android:layout_height="@dimen/controls_size"
+            android:layout_margin="@dimen/controls_margin"
+            android:elevation="6dp"
+            android:onClick="@{() -> streamer.switchCamera()}"
+            android:src="@drawable/ic_switch_camera"
+            android:visibility="@{streamer.started ? View.INVISIBLE : View.VISIBLE}" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="@dimen/controls_size"
+            android:layout_height="@dimen/controls_size"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/controls_margin"
+            android:background="@drawable/button_start"
+            android:elevation="6dp"
+            android:onClick="@{() -> (streamer.started ? streamer.stopStreaming() : streamer.startStreaming())}"
+            android:padding="12dp"
+            android:src="@{streamer.started ? @drawable/ic_stop_stream : @drawable/ic_start_stream}" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/MainText"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/controls_margin"
+            android:text='@{fps != 0 ? String.format(Locale.getDefault(), @string/fps_pattern, fps) : ""}'
+            android:visibility="@{streamer.started ? View.VISIBLE : View.INVISIBLE}" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/MainText"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/controls_margin"
+            android:text="@{String.format(Locale.getDefault(), @string/preview_size_pattern, previewSize.width, previewSize.height)}" />
+    </RelativeLayout>
+</layout>

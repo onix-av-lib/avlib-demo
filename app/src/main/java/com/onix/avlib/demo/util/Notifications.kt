@@ -5,6 +5,7 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
+import android.os.Build
 
 import androidx.core.app.NotificationCompat
 import com.onix.avlib.demo.MainActivity
@@ -17,12 +18,21 @@ object Notifications {
         mParentIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         val iUniqueId = (System.currentTimeMillis() and 0xfffffff).toInt()
 
-        val pendingIntent = PendingIntent.getActivity(
-            context,
-            iUniqueId,
-            mParentIntent,
-            PendingIntent.FLAG_CANCEL_CURRENT
-        )
+        val pendingIntent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            PendingIntent.getActivity(
+                context,
+                iUniqueId,
+                mParentIntent,
+                PendingIntent.FLAG_CANCEL_CURRENT or PendingIntent.FLAG_IMMUTABLE
+            )
+        } else {
+            PendingIntent.getActivity(
+                context,
+                iUniqueId,
+                mParentIntent,
+                PendingIntent.FLAG_CANCEL_CURRENT
+            )
+        }
 
         val notificationBuilder = NotificationCompat.Builder(context, "screen_recording_youtube")
             .setSmallIcon(context.applicationInfo.icon)

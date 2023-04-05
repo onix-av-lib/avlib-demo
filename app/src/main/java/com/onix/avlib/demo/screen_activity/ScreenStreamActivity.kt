@@ -5,9 +5,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.livinglifetechway.quickpermissions_kotlin.runWithPermissions
-import com.livinglifetechway.quickpermissions_kotlin.util.QuickPermissionsOptions
-import com.livinglifetechway.quickpermissions_kotlin.util.QuickPermissionsRequest
+import com.onix.avlib.demo.util.permissions.runWithPermissions
+import com.onix.avlib.demo.util.permissions.util.QuickPermissionsOptions
+import com.onix.avlib.demo.util.permissions.util.QuickPermissionsRequest
 import com.onix.avlib.*
 import com.onix.avlib.demo.ARG_SERVER_URL
 import com.onix.avlib.demo.R

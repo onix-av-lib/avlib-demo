@@ -68,6 +68,7 @@ class ActionCamStreamFragment : Fragment(), IActionCamStreamerEvents {
             ERROR_CAMERA_PREVIEW -> toast(R.string.error_camera)
             ERROR_INTERNET_CONNECTION -> toast(R.string.error_connection)
             ERROR_SERVER -> toast(R.string.error_server)
+            else -> {}
         }
 
         binding.fps = 0

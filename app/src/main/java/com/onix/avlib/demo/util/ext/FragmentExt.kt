@@ -6,8 +6,8 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.onix.avlib.demo.R
 
 fun Fragment.alert(resId: Int) {
-    if (activity != null) {
-        MaterialAlertDialogBuilder(activity).apply {
+    activity?.let {
+        MaterialAlertDialogBuilder(it).apply {
             setMessage(resId)
             setCancelable(false)
             setPositiveButton(R.string.ok, null)
